@@ -148,7 +148,9 @@ const Navbar = () => {
           </Link>
         )}
 
-        <ul className='hidden sm:flex items-center gap-2'>
+        {/* Only the sm–lg gap — below that it's the hamburger menu, at lg+
+            SideNav's left-edge selector takes over this job instead. */}
+        <ul className='hidden sm:flex lg:hidden items-center gap-2'>
           {navLinks.map((nav) => (
             <li key={nav.id}>
               <Magnetic strength={0.4}>

@@ -19,12 +19,14 @@ const LINK_LABELS = {
 
 // A YouTube/Vimeo URL becomes an embedded player; anything else in
 // `product.video` is treated as a direct file (self-hosted mp4, a CDN
-// link) and played natively instead.
+// link) and played natively instead. Both embed variants autoplay muted
+// (the only way browsers allow autoplay at all) — their native players
+// still give the viewer a pause button, same as the direct-file <video>.
 const getVideoEmbedUrl = (url) => {
   const yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([a-zA-Z0-9_-]{11})/);
-  if (yt) return `https://www.youtube.com/embed/${yt[1]}`;
+  if (yt) return `https://www.youtube.com/embed/${yt[1]}?autoplay=1&mute=1&rel=0`;
   const vimeo = url.match(/vimeo\.com\/(\d+)/);
-  if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`;
+  if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}?autoplay=1&muted=1`;
   return null;
 };
 
@@ -73,27 +75,50 @@ const ProductDetail = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Link
-          to='/products'
-          className='inline-flex items-center min-h-[44px] font-sans text-xs tracking-[0.2em] uppercase text-muted hover:text-accent transition-colors'
-        >
-          ← All products
-        </Link>
+        {/* Prev/Next right under the navbar too, not just at the bottom
+            of the page — compact pills, not the full cards down there, so
+            jumping between products doesn't need a scroll either way. */}
+        <div className='flex items-center justify-between gap-3 mb-8'>
+          <Link
+            to='/products'
+            className='inline-flex items-center min-h-[44px] font-sans text-xs tracking-[0.2em] uppercase text-muted hover:text-accent transition-colors shrink-0'
+          >
+            ← All products
+          </Link>
+          <div className='flex items-center gap-2 min-w-0'>
+            <Link
+              to={`/products/${prev.slug}`}
+              className='inline-flex items-center gap-1.5 min-h-[36px] max-w-[9rem] sm:max-w-[12rem] font-sans text-xs text-muted border border-line rounded-full pl-2.5 pr-3 hover:border-accent hover:text-accent transition-colors'
+              aria-label={`Previous: ${prev.name}`}
+            >
+              <span className='shrink-0'>‹</span>
+              <span className='truncate'>{prev.name}</span>
+            </Link>
+            <Link
+              to={`/products/${next.slug}`}
+              className='inline-flex items-center gap-1.5 min-h-[36px] max-w-[9rem] sm:max-w-[12rem] font-sans text-xs text-muted border border-line rounded-full pl-3 pr-2.5 hover:border-accent hover:text-accent transition-colors'
+              aria-label={`Next: ${next.name}`}
+            >
+              <span className='truncate'>{next.name}</span>
+              <span className='shrink-0'>›</span>
+            </Link>
+          </div>
+        </div>
 
-        <p className='font-mono text-[11px] tracking-[0.16em] uppercase text-muted mt-6'>
+        <p className='font-mono text-[11px] tracking-[0.16em] uppercase text-muted'>
           {String(index + 1).padStart(2, "0")} / {products.length}
         </p>
 
-        <div className='flex flex-wrap items-center gap-3 mt-3 mb-4'>
+        <div className='flex flex-wrap items-center gap-3 mt-3 mb-3'>
           {product.logo && (
             <img
               src={product.logo}
               alt=''
-              className='w-12 h-12 sm:w-16 sm:h-16 rounded-xl border border-line2 object-cover shrink-0'
+              className='w-9 h-9 sm:w-11 sm:h-11 rounded-lg border border-line2 object-cover shrink-0'
             />
           )}
           <h1
-            className='font-serif text-paper leading-[0.98] text-[clamp(48px,8vw,96px)]'
+            className='font-serif text-paper leading-[1.02] text-[clamp(28px,4.2vw,44px)]'
             style={{ overflowWrap: "anywhere" }}
           >
             {product.name}
@@ -109,7 +134,7 @@ const ProductDetail = () => {
         </div>
 
         {product.tagline && (
-          <p className='font-serif italic text-2xl sm:text-3xl text-accent leading-snug max-w-2xl mb-10 text-balance'>
+          <p className='font-serif italic text-lg sm:text-xl text-accent leading-snug max-w-2xl mb-8 text-balance'>
             {product.tagline}
           </p>
         )}
@@ -254,7 +279,15 @@ const ProductDetail = () => {
                     />
                   </div>
                 ) : (
-                  <video src={product.video} controls className='w-full h-auto block' />
+                  <video
+                    src={product.video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                    className='w-full h-auto block'
+                  />
                 );
               })()
             ) : product.gif ? (
@@ -274,9 +307,9 @@ const ProductDetail = () => {
         )}
 
         {hasWriteup && (
-          <div className='space-y-5 max-w-2xl mb-12'>
+          <div className='space-y-4 max-w-2xl mb-12'>
             {paragraphs.map((para, i) => (
-              <p key={i} className={`${styles.body} text-base sm:text-lg`}>
+              <p key={i} className={`${styles.body} text-sm sm:text-base`}>
                 {para}
               </p>
             ))}
@@ -331,7 +364,7 @@ const ProductDetail = () => {
             <span className='font-mono text-[10px] tracking-[0.14em] uppercase text-muted'>
               ← Previous
             </span>
-            <span className='font-serif text-xl text-paper group-hover:text-accent transition-colors'>
+            <span className='font-serif text-lg text-paper group-hover:text-accent transition-colors'>
               {prev.name}
             </span>
           </Link>
@@ -342,7 +375,7 @@ const ProductDetail = () => {
             <span className='font-mono text-[10px] tracking-[0.14em] uppercase text-muted'>
               Next →
             </span>
-            <span className='font-serif text-xl text-paper group-hover:text-accent transition-colors'>
+            <span className='font-serif text-lg text-paper group-hover:text-accent transition-colors'>
               {next.name}
             </span>
           </Link>

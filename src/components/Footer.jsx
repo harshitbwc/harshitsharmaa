@@ -31,7 +31,11 @@ const Mark = ({ size = 32 }) => (
 
 const Footer = () => {
   return (
-    <footer className='border-t border-line py-10'>
+    // Extra bottom clearance, not just the usual py-10 — Radio and the
+    // chat button are `fixed` to the viewport corners (MobileDock too,
+    // below 1024px), so without it they'd sit permanently on top of this
+    // content once the page is scrolled all the way down.
+    <footer className='border-t border-line pt-10 pb-28 lg:pb-32'>
       <div className='max-w-[1100px] mx-auto px-6 sm:px-8 flex flex-wrap items-center justify-between gap-6'>
         <div className='flex items-center gap-3'>
           <Mark />

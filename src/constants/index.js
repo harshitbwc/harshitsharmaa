@@ -41,6 +41,13 @@ export const workLog = [
     tags: ["DEXs", "Staking", "Consensus"],
   },
   {
+    role: "Smart Contract Engineer",
+    org: "Shiba Inu",
+    date: "2021",
+    text: "Built ShibaSwap end to end — wrote its smart contracts and audited the DEX and yield farming platform myself. Shipped DeFi primitives like vote-escrowed staking and multi-chain farming, plus the cross-chain messaging behind Shibarium and shib-identity. Also built the internal automation that cut contract deployment, auditing, and testing time in half, and led cross-functional teams through new product launches.",
+    tags: ["ShibaSwap", "Staking", "Shibarium"],
+  },
+  {
     role: "Blockchain Developer",
     org: "Quillhash",
     date: "2020",

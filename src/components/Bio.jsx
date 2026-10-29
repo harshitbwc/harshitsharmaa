@@ -48,8 +48,9 @@ const Bio = () => {
             <p className='font-serif text-paper leading-snug text-[clamp(24px,3vw,32px)] flex-[1_1_380px] text-pretty'>
               Six years building smart contracts, DeFi protocols, and ZK
               systems: the kind of work where a bug isn't a bug ticket, it's
-              a headline. I've worked with projects holding over $1B in TVL,
-              which mostly means I check things twice. Then a third time.
+              a headline. I built and audited ShibaSwap, among projects
+              holding over $1B in TVL combined, which mostly means I check
+              things twice. Then a third time.
             </p>
           </motion.div>
 

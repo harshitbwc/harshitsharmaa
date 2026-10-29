@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Navbar, Footer } from "./components";
+import { Navbar, SideNav, Footer } from "./components";
 import Home from "./components/Home";
 import ProductsPage from "./components/ProductsPage";
 import ProductDetail from "./components/ProductDetail";
@@ -20,6 +20,7 @@ const App = () => {
           <ScrollProgress />
           <CursorGlow />
           <Navbar />
+          <SideNav />
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/products' element={<ProductsPage />} />
