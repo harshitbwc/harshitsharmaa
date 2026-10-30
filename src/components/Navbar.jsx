@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { navLinks } from "../constants";
 import Magnetic from "./Magnetic";
+import { useHeroActive } from "../hooks/useHeroActive";
 
 // Anchor entries only make sense as an in-page jump while already on "/" —
 // Lenis owns that scroll (see useSmoothScroll's click handler). Anywhere
@@ -71,6 +72,7 @@ const Navbar = () => {
   const [activeAnchor, setActiveAnchor] = useState(null);
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const heroActive = useHeroActive();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -148,7 +150,12 @@ const Navbar = () => {
           </Link>
         )}
 
-        <ul className='hidden sm:flex items-center gap-2'>
+        {/* lg+ gets SideNav's buttons over the Hero portrait instead, but
+            only while that's actually showing (heroActive) — everywhere
+            else at lg+ (scrolled past Hero, or any other route) this row
+            is the only nav, so it has to come back. Below sm it's the
+            hamburger menu regardless. */}
+        <ul className={`hidden sm:flex items-center gap-2 ${heroActive ? "lg:hidden" : ""}`}>
           {navLinks.map((nav) => (
             <li key={nav.id}>
               <Magnetic strength={0.4}>
