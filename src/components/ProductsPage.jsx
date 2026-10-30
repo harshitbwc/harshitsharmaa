@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { products } from "../constants";
+import { visibleProducts as products } from "../constants";
 import ProductCard from "./ProductCard";
 
 // A real page now, not a section in the scroll flow — animates in on load

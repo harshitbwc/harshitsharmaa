@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { products } from "../constants";
+import { products, visibleProducts } from "../constants";
 import { useChatContext } from "../context/ChatContext";
 
 const LINK_LABELS = {
@@ -34,12 +34,14 @@ const ProductDetail = () => {
   const { slug } = useParams();
   const { openChat } = useChatContext();
   const [copied, setCopied] = useState(false);
-  const index = products.findIndex((p) => p.slug === slug);
-  const product = products[index];
+  const product = products.find((p) => p.slug === slug);
 
-  // An unknown slug (typo'd URL, a product that's been removed) goes back
+  // An unknown slug (typo'd URL, a product that's been removed) or a
+  // hidden one (not ready to show publicly, linked directly) goes back
   // to the index instead of showing a dead end.
-  if (!product) return <Navigate to='/products' replace />;
+  if (!product || product.hidden) return <Navigate to='/products' replace />;
+
+  const index = visibleProducts.findIndex((p) => p.slug === slug);
 
   // `download` gets its own prominent CTA below, not a plain pill in this
   // row — see the block right after the install-command one.
@@ -53,8 +55,8 @@ const ProductDetail = () => {
     : [];
   const hasWriteup = paragraphs.length > 0;
 
-  const prev = products[(index - 1 + products.length) % products.length];
-  const next = products[(index + 1) % products.length];
+  const prev = visibleProducts[(index - 1 + visibleProducts.length) % visibleProducts.length];
+  const next = visibleProducts[(index + 1) % visibleProducts.length];
 
   const handleCopyInstall = async () => {
     try {
@@ -106,7 +108,7 @@ const ProductDetail = () => {
         </div>
 
         <p className='font-mono text-[11px] tracking-[0.16em] uppercase text-muted'>
-          {String(index + 1).padStart(2, "0")} / {products.length}
+          {String(index + 1).padStart(2, "0")} / {visibleProducts.length}
         </p>
 
         <div className='flex flex-wrap items-center gap-3 mt-3 mb-3'>

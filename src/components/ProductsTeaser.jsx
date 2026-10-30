@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
-import { products } from "../constants";
+import { visibleProducts as products } from "../constants";
 import ProductCard from "./ProductCard";
 
 const ProductsTeaser = () => {
