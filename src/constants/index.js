@@ -224,10 +224,10 @@ export const products = [
     slug: "exdisplay",
     name: "ExDisplay",
     tagline: "Turn the tablet in your drawer into a second screen for your Mac.",
-    logo: "",
-    image: "",
+    logo: "https://raw.githubusercontent.com/harshitbwc/ExDisplay/main/docs/assets/logo-512.png",
+    image: "https://raw.githubusercontent.com/harshitbwc/ExDisplay/main/docs/assets/banner.png",
     gif: "",
-    video: "",
+    video: "https://raw.githubusercontent.com/harshitbwc/ExDisplay/main/docs/assets/launch.mp4",
     description:
       "ExDisplay turns an Android tablet into a touch-enabled second display for your Mac over a simple USB cable. Free, open source, and no extra hardware.\n\nMost Macs can only drive one external monitor, and tablets can't act as monitors on their own. ExDisplay fixes both.\n\nPlug in an Android tablet and your Mac sees a brand-new screen. Drag windows onto it, keep a chat or a music player in view, or park your reference docs beside your work. It's a true extra display, not a mirror, and it works alongside the monitor you already have.\n\nTouch works the way you'd expect from a trackpad: tap to click, drag to move things, two fingers to scroll, three fingers to flip between desktops. Everything travels over the cable, so there's no Wi-Fi setup, no account, and nothing leaves your computer.",
     features: [

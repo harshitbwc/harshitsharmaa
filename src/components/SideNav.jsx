@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { navLinks } from "../constants";
 import { useHeroActive } from "../hooks/useHeroActive";
 
-// Four standalone buttons over the Hero portrait, right side, under the
-// navbar — the real way to jump to a section at lg+, not a hover-reveal
-// menu. Only exists alongside the portrait itself (see useHeroActive).
-// Navbar keeps its own Bio/Work/Products/Contact row for the sm–lg range
-// (no portrait, nothing to overlay there) and the mobile menu below that.
+// Four standalone buttons stacked bottom-right, right above the "Ask me
+// anything" button (FloatingChat: bottom-6, 52px tall) — the real way to
+// jump to a section at lg+, not a hover-reveal menu. Anchored low so it
+// doesn't sit over the Hero portrait's face. Only exists alongside the
+// portrait itself (see useHeroActive). Navbar keeps its own Bio/Work/
+// Products/Contact row for the sm–lg range (no portrait, nothing to
+// overlay there) and the mobile menu below that.
 const SideNav = () => {
   const heroActive = useHeroActive();
   if (!heroActive) return null;
@@ -34,7 +36,7 @@ const SideNav = () => {
   return (
     <nav
       aria-label='Jump to section'
-      className='hidden lg:flex fixed right-6 xl:right-10 top-24 z-30 flex-col items-end gap-2.5'
+      className='hidden lg:flex fixed right-6 xl:right-10 bottom-[92px] z-30 flex-col items-end gap-2.5'
     >
       {navLinks.map((nav) => (
         <Item key={nav.id} nav={nav} />
