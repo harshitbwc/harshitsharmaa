@@ -171,8 +171,9 @@ export const products = [
     gif: "",
     video: "https://youtu.be/TDZrIHv3bRU",
     description:
-      "Every Hardhat developer has pasted a private key into .env and hoped it never got committed. hardhat-airsign removes that step. One command starts a local signing server with a React UI, and the plugin adds a RemoteSigner (a custom ethers v6 signer) to your scripts. Deploy scripts send unsigned transactions to the server, the browser shows them, and your wallet signs and sends them.\n\nBeyond signing, the UI works as a small dev console: a runner for tasks and scripts, a panel for reading and writing deployed contracts, and wallet-proxied RPC, so no Alchemy or Infura key is needed.\n\nPublished on npm as an ESM-only package, with the built signing UI bundled inside it. MIT licensed, currently at v3.0.0 — v2.x stays available for projects still on Hardhat 2.",
+      "Every Hardhat developer has pasted a private key into .env and hoped it never got committed. hardhat-airsign removes that step. One command starts a local signing server with a React UI, and the plugin adds a RemoteSigner (a custom ethers v6 signer) to your scripts. Deploy scripts send unsigned transactions to the server, the browser shows them, and your wallet signs and sends them.\n\nBeyond signing, the UI works as a small dev console: a runner for tasks and scripts, a panel for reading and writing deployed contracts, and wallet-proxied RPC, so no Alchemy or Infura key is needed.\n\nPublished on npm as an ESM-only package, with the built signing UI bundled inside it. MIT licensed, currently at v3.0.0 — v2.x stays available for projects still on Hardhat 2.\n\nAccepted as an official Hardhat community plugin, listed on Hardhat's own community plugins page alongside the rest of the vetted ecosystem.",
     features: [
+      "Official Hardhat community plugin — reviewed and accepted onto Hardhat's own community plugins list.",
       "No private keys on the dev machine — it only ever sees unsigned transactions and tx hashes. Signing happens in the wallet.",
       "Existing scripts work unchanged. Turn on remoteSigner: true for a network in the config; switching back to private keys is a config change too.",
       "Remote signing — the signer can be on a different machine, like a teammate or a hardware-wallet user, connected through an ngrok link.",
@@ -205,7 +206,7 @@ export const products = [
       "GitHub Actions",
     ],
     year: "",
-    status: "Live",
+    status: "Live — official Hardhat community plugin",
     installCommand: "npm install hardhat-airsign",
     downloadLabel: "",
     downloadNote: "",

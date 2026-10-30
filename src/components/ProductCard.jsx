@@ -27,7 +27,7 @@ const ProductCard = ({ product }) => (
     to={`/products/${product.slug}`}
     className='group flex flex-col h-full rounded-xl border border-line overflow-hidden hover:border-accent transition-colors'
   >
-    <div className='relative aspect-[4/3] w-full'>
+    <div className='relative aspect-video w-full'>
       <ProductImage product={product} />
       {product.logo && (
         <img
