@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="hat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd60a" />
+      <stop offset="1" stop-color="#f5a800" />
+    </linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0" stop-color="#0d1a3d" />
+      <stop offset="1" stop-color="#060a1c" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.3" r="0.65">
+      <stop offset="0" stop-color="#ffd60a" stop-opacity="0.14" />
+      <stop offset="1" stop-color="#ffd60a" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)" />
+  <rect width="1600" height="900" fill="url(#glow)" />
+
+  <circle cx="1230" cy="420" r="270" fill="none" stroke="#1b2a5c" stroke-width="1.5" stroke-dasharray="2 8" />
+
+  <!-- hazard stripe footer -->
+  <g>
+    <rect x="0" y="840" width="1600" height="60" fill="#0a0a0a" />
+    <clipPath id="footerClip"><rect x="0" y="840" width="1600" height="60" /></clipPath>
+    <g clip-path="url(#footerClip)" fill="#ffd60a">
+      <g transform="translate(-20 840)">
+        <polygon points="0,60 34,0 68,0 34,60" />
+        <polygon points="68,60 102,0 136,0 102,60" />
+        <polygon points="136,60 170,0 204,0 170,60" />
+        <polygon points="204,60 238,0 272,0 238,60" />
+        <polygon points="272,60 306,0 340,0 306,60" />
+        <polygon points="340,60 374,0 408,0 374,60" />
+        <polygon points="408,60 442,0 476,0 442,60" />
+        <polygon points="476,60 510,0 544,0 510,60" />
+        <polygon points="544,60 578,0 612,0 578,60" />
+        <polygon points="612,60 646,0 680,0 646,60" />
+        <polygon points="680,60 714,0 748,0 714,60" />
+        <polygon points="748,60 782,0 816,0 782,60" />
+        <polygon points="816,60 850,0 884,0 850,60" />
+        <polygon points="884,60 918,0 952,0 918,60" />
+        <polygon points="952,60 986,0 1020,0 986,60" />
+        <polygon points="1020,60 1054,0 1088,0 1054,60" />
+        <polygon points="1088,60 1122,0 1156,0 1122,60" />
+        <polygon points="1156,60 1190,0 1224,0 1190,60" />
+        <polygon points="1224,60 1258,0 1292,0 1258,60" />
+        <polygon points="1292,60 1326,0 1360,0 1326,60" />
+        <polygon points="1360,60 1394,0 1428,0 1394,60" />
+        <polygon points="1428,60 1462,0 1496,0 1462,60" />
+        <polygon points="1496,60 1530,0 1564,0 1530,60" />
+        <polygon points="1564,60 1598,0 1632,0 1598,60" />
+      </g>
+    </g>
+  </g>
+
+  <!-- hardhat mark -->
+  <g transform="translate(1230 390)">
+    <path d="M-150 60 C-150 -78 -66 -162 0 -162 C66 -162 150 -78 150 60 Z" fill="url(#hat)" />
+    <rect x="-176" y="46" width="352" height="38" rx="19" fill="#0a0a0a" />
+    <rect x="-18" y="-162" width="36" height="46" rx="8" fill="#0a0a0a" />
+  </g>
+  <!-- signature squiggle under the hat -->
+  <path d="M1110 600 C1148 562 1186 638 1224 600 C1262 562 1300 638 1338 600" fill="none" stroke="#ffd60a" stroke-width="10" stroke-linecap="round" opacity="0.9" />
+
+  <text x="120" y="400" font-family="Georgia, 'Times New Roman', serif" font-size="80" fill="#ffffff">hardhat-airsign</text>
+  <text x="120" y="456" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#9aa5c7">Deploy smart contracts without ever putting a private key in .env.</text>
+
+  <g font-family="'Courier New', monospace" font-size="15" letter-spacing="2" fill="#ffd60a">
+    <text x="121" y="330">OFFICIAL HARDHAT COMMUNITY PLUGIN</text>
+  </g>
+</svg>
