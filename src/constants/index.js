@@ -259,11 +259,11 @@ export const products = [
     downloads: [
       {
         label: "Download for Mac (Apple Silicon, macOS 14+)",
-        url: "https://github.com/harshitbwc/ExDisplay/releases/download/v1.2.0/ExDisplay-1.2.0-mac-arm64.zip",
+        url: "https://github.com/harshitbwc/ExDisplay/releases/latest/download/ExDisplay-mac-arm64.zip",
       },
       {
         label: "Download for Android (8.0+)",
-        url: "https://github.com/harshitbwc/ExDisplay/releases/download/v1.2.0/ExDisplay-1.2.0-android.apk",
+        url: "https://github.com/harshitbwc/ExDisplay/releases/latest/download/ExDisplay-android.apk",
       },
     ],
     links: {
@@ -317,8 +317,8 @@ export const products = [
     slug: "yoinkr",
     name: "Yoinkr",
     tagline: "Yoink any YouTube video or audio — in seconds, for free.",
-    logo: "",
-    image: "",
+    logo: "https://raw.githubusercontent.com/harshitbwc/yoinkr/main/app/apple-icon.png",
+    image: "https://raw.githubusercontent.com/harshitbwc/yoinkr/main/public/banner.png",
     gif: "",
     video: "",
     description:
@@ -408,7 +408,7 @@ export const products = [
     name: "What Are the Odds",
     tagline: "Dare your friends. Settle it on-chain.",
     logo: "https://raw.githubusercontent.com/harshitbwc/what-are-the-odds/main/public/icon-512.png",
-    image: "",
+    image: "https://raw.githubusercontent.com/harshitbwc/what-are-the-odds/main/public/hero.png",
     gif: "",
     video: "https://raw.githubusercontent.com/harshitbwc/what-are-the-odds/main/public/hero.mp4",
     description:
