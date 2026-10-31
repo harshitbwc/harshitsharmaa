@@ -6,7 +6,12 @@
 // has no image imports of its own, so it's safe to reuse directly, and the
 // site copy (first person, the fuller of the two versions this used to
 // have) is the one source of truth instead of two hand-synced copies.
-import { workLog, visibleProducts } from "../constants";
+// Explicit "/index.js", not just "../constants": Vite's own resolver is
+// fine with a bare directory import, but this file is also pulled in by
+// api/chat.js, which runs under plain Node ESM on Vercel — that rejects a
+// directory import outright (ERR_UNSUPPORTED_DIR_IMPORT), crashing the
+// serverless function before it ever reaches the GROQ_API_KEY check.
+import { workLog, visibleProducts } from "../constants/index.js";
 
 export const positioning =
   "Harshit got into web3 before it was cool and is still here after it's " +

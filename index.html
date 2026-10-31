@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/mark.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
     <link rel="canonical" href="https://harshitsharmaa.com/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
@@ -31,6 +33,39 @@
       content="Web3 for six years. AI lately. Still not in a lane."
     />
     <meta name="twitter:image" content="https://harshitsharmaa.com/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://harshitsharmaa.com/#person",
+            "name": "Harshit Sharmaa",
+            "url": "https://harshitsharmaa.com/",
+            "image": "https://harshitsharmaa.com/og-image.png",
+            "jobTitle": "Blockchain & AI Engineer",
+            "description": "Web3 for six years. AI lately. Still not in a lane.",
+            "email": "mailto:blockchainworld911@gmail.com",
+            "sameAs": [
+              "https://x.com/harshxeth_",
+              "https://instagram.com/blockchainworldco",
+              "https://github.com/harshitbwc",
+              "https://www.linkedin.com/in/harshit-sharma-a3b982155/",
+              "https://farcaster.xyz/harsh9"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://harshitsharmaa.com/#website",
+            "url": "https://harshitsharmaa.com/",
+            "name": "Harshit Sharmaa",
+            "description": "Web3 for six years. AI lately. Still not in a lane.",
+            "publisher": { "@id": "https://harshitsharmaa.com/#person" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
