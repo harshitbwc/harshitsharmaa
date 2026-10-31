@@ -636,7 +636,7 @@ export const socials = {
   email: "blockchainworld911@gmail.com",
   twitter: "https://x.com/harshxeth_",
   instagram: "https://instagram.com/blockchainworldco",
-  github: "https://github.com/harry91198",
+  github: "https://github.com/harshitbwc",
   linkedin: "https://www.linkedin.com/in/harshit-sharma-a3b982155/",
   farcaster: "https://farcaster.xyz/harsh9",
 };

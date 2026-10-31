@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { products, visibleProducts } from "../constants";
 import { useChatContext } from "../context/ChatContext";
+import { useSEO } from "../hooks/useSEO";
 
 const LINK_LABELS = {
   website: "Website",
@@ -35,6 +36,16 @@ const ProductDetail = () => {
   const { openChat } = useChatContext();
   const [copied, setCopied] = useState(false);
   const product = products.find((p) => p.slug === slug);
+
+  // Called unconditionally (hook rules) even though `product` can be
+  // undefined for a bad slug — the hook just falls back to site defaults
+  // in that case, and the redirect right below unmounts it immediately.
+  useSEO({
+    title: product?.name,
+    description: product?.tagline,
+    path: `/products/${slug}`,
+    image: product?.image,
+  });
 
   // An unknown slug (typo'd URL, a product that's been removed) or a
   // hidden one (not ready to show publicly, linked directly) goes back

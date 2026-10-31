@@ -6,7 +6,7 @@
 // has no image imports of its own, so it's safe to reuse directly, and the
 // site copy (first person, the fuller of the two versions this used to
 // have) is the one source of truth instead of two hand-synced copies.
-import { workLog, products } from "../constants";
+import { workLog, visibleProducts } from "../constants";
 
 export const positioning =
   "Harshit got into web3 before it was cool and is still here after it's " +
@@ -41,8 +41,10 @@ export function buildSystemPrompt() {
 
   // Entries without a tagline yet (newly added, real copy still pending)
   // are left out here rather than surfaced as a blank line the model has
-  // nothing to say about.
-  const projectsText = products
+  // nothing to say about. visibleProducts also drops hidden: true entries
+  // — the assistant shouldn't talk about a product the site itself isn't
+  // showing yet.
+  const projectsText = visibleProducts
     .filter((p) => p.tagline)
     .map((p) => `- ${p.name}: ${p.tagline}`)
     .join("\n");

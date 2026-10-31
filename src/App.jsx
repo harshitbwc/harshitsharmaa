@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { Navbar, SideNav, Footer } from "./components";
 import Home from "./components/Home";
@@ -25,6 +25,11 @@ const App = () => {
             <Route path='/' element={<Home />} />
             <Route path='/products' element={<ProductsPage />} />
             <Route path='/products/:slug' element={<ProductDetail />} />
+            {/* An unknown route (typo, stale link) goes home instead of
+                rendering a blank page between the navbar and footer —
+                same "don't show a dead end" call ProductDetail makes for
+                an unknown product slug. */}
+            <Route path='*' element={<Navigate to='/' replace />} />
           </Routes>
           <Footer />
           <FloatingWidgets />

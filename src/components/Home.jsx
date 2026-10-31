@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { Hero, Bio, Work, ProductsTeaser, Contact } from "./index";
 import { lenis } from "../lib/smoothScroll";
+import { useSEO } from "../hooks/useSEO";
 
 // Landing here with a hash (e.g. from the nav's "Work" link while on
 // /products) needs a beat before scrolling: the target section has to
@@ -10,6 +11,8 @@ import { lenis } from "../lib/smoothScroll";
 // height that doesn't exist yet.
 const Home = () => {
   const location = useLocation();
+
+  useSEO({ path: "/" });
 
   useEffect(() => {
     if (!location.hash) return;

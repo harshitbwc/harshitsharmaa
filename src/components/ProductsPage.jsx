@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { visibleProducts as products } from "../constants";
 import ProductCard from "./ProductCard";
+import { useSEO } from "../hooks/useSEO";
 
 // A real page now, not a section in the scroll flow — animates in on load
 // (mount) rather than on scroll-into-view, since there's no scrolling to
@@ -10,6 +11,12 @@ import ProductCard from "./ProductCard";
 // Same card as the home teaser (see ProductCard.jsx), just all 11 of them
 // instead of a preview slice.
 const ProductsPage = () => {
+  useSEO({
+    title: "Products",
+    description: "Tools and experiments Harshit Sharmaa built because he wanted them to exist — web3, AI, and everything between.",
+    path: "/products",
+  });
+
   return (
     <div className={`${styles.container} pt-32 sm:pt-40 pb-24 min-h-screen`}>
       <motion.p
